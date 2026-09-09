@@ -1,6 +1,15 @@
 <title>Talentum Business</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Open+Sans:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0&display=swap">
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Open+Sans:wght@400;500;600;700&display=swap');
+  .material-symbols-outlined{
+    font-family:'Material Symbols Outlined'; font-weight:normal; font-style:normal;
+    line-height:1; letter-spacing:normal; text-transform:none; display:inline-block;
+    white-space:nowrap; word-wrap:normal; direction:ltr; -webkit-font-smoothing:antialiased;
+  }
+  ::-webkit-scrollbar{ width:6px; }
+  ::-webkit-scrollbar-track{ border-radius:8px; background: rgb(9,14,18); }
+  ::-webkit-scrollbar-thumb{ border-radius:8px; border:4px solid; background: rgb(19,28,36); }
 
   :root{
     --teal: #0EB0A4;
@@ -34,9 +43,11 @@
     backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--border);
   }
-  .nav-brand{ font-family:'DM Sans', sans-serif; font-weight:600; font-size:14px; color:var(--text-primary); }
+  .nav-brand{ display:flex; align-items:center; gap:10px; font-family:'DM Sans', sans-serif; font-weight:600; font-size:14px; color:var(--text-primary); }
+  .nova-logo{ height:19px; width:auto; display:block; }
+  .nav-brand-sep{ color:var(--text-muted); font-weight:400; }
   .nav-links{ display:flex; align-items:center; gap:26px; list-style:none; }
-  .nav-links a{ color:var(--text-muted); text-decoration:none; font-size:13px; font-weight:500; transition:color 0.2s; }
+  .nav-links a{ color:var(--text-muted); text-decoration:none; font-size:13px; font-weight:600; transition:color 0.2s; }
   .nav-links a:hover{ color:var(--teal); }
   .nav-cta{
     background: var(--teal); color: var(--bg-primary) !important;
@@ -60,10 +71,7 @@
     font-size:14px; font-weight:600; transition: color 0.2s;
   }
   .btn-secondary:hover{ color: var(--teal); }
-  .btn-secondary .chev{
-    width:6px; height:6px; border-right:1.5px solid currentColor; border-bottom:1.5px solid currentColor;
-    transform: rotate(-45deg); margin-top:-2px;
-  }
+  .btn-secondary .material-symbols-outlined{ font-size:18px; }
   .cta-row{ display:flex; align-items:center; gap:28px; flex-wrap:wrap; }
 
   /* ---------- Hero ---------- */
@@ -212,7 +220,8 @@
   }
 
   footer{ padding:36px 40px; background: var(--bg-primary); border-top:1px solid var(--border); display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:14px; }
-  .footer-brand{ font-family:'DM Sans', sans-serif; font-weight:600; font-size:13px; color:var(--text-secondary); }
+  .footer-brand{ display:flex; align-items:center; gap:10px; font-family:'DM Sans', sans-serif; font-weight:600; font-size:13px; color:var(--text-secondary); }
+  .footer-brand .nova-logo{ height:16px; }
   .footer-right{ font-size:13px; color:var(--text-muted); }
 
   .fade-in{ opacity:0; transform:translateY(20px); transition:opacity 0.6s ease, transform 0.6s ease; }
@@ -226,7 +235,14 @@
 </style>
 
 <nav>
-  <span class="nav-brand">Nova — Talentum Business</span>
+  <span class="nav-brand">
+    <svg class="nova-logo" viewBox="0 0 369 112" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Nova">
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M195.098 55.9614C195.098 38.5557 206.473 26.3186 222.863 26.3186C239.242 26.3186 250.706 38.5557 250.706 55.9614C250.706 73.3672 239.175 85.5932 222.786 85.5932C206.396 85.5932 195.098 73.3672 195.098 55.9614ZM205.612 55.9614C205.612 68.2206 212.349 75.9516 222.863 75.9516C233.366 75.9516 240.114 68.2316 240.114 55.9614C240.114 43.6912 233.377 35.9603 222.863 35.9603C212.349 35.9603 205.612 43.7023 205.612 55.9614ZM139.191 27.3346L166.084 67.9554V27.3346H175.968V84.6544H166.084L139.114 44.0446V84.6544H129.229V27.3346H139.191ZM291.868 60.3459C290.763 63.2506 289.593 66.7847 288.179 71.7988C286.92 67.1713 285.826 63.8028 284.567 60.3459L272.021 27.3346H261.363L282.999 84.6544H293.348L314.685 27.3346H304.248L291.868 60.3459ZM337.955 27.3346H348.237L368.934 84.6544H358.342L353.715 71.4013H332.311L327.684 84.6544H317.258L337.955 27.3346ZM341.809 44.4422L335.304 62.9524H350.866L344.239 44.4422C343.742 43 343.351 41.5235 343.068 40.0245C342.737 41.5208 342.317 42.996 341.809 44.4422Z" fill="white"/>
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M77.1001 43.1279C50.9362 47.5456 27.7543 63.0076 12.977 85.0961C7.32076 93.2795 2.94484 102.277 0 111.779C17.5714 35.9381 50.3729 0 50.3729 0C50.3729 0 63.2064 14.0594 77.1001 43.1279ZM80.8441 52.7587L81.4626 52.6814C89.6966 71.823 96.1587 91.679 100.768 112C100.768 112 79.3421 90.486 54.0065 85.262C51.6085 84.7762 49.1374 84.7762 46.7394 85.262C21.8787 90.3866 0.795188 111.172 0 111.967C8.92534 94.6077 21.9701 79.701 37.9923 68.552C45.8549 63.227 54.4688 59.1062 63.5488 56.326C68.0653 54.969 72.6708 53.9283 77.332 53.2115C77.6848 53.1649 78.0366 53.1153 78.3883 53.0658C79.2036 52.9508 80.0185 52.8359 80.8441 52.7587Z" fill="#0EB0A4"/>
+    </svg>
+    <span class="nav-brand-sep">·</span>
+    <span>Talentum Business</span>
+  </span>
   <ul class="nav-links">
     <li><a href="#estructura">Estructura</a></li>
     <li><a href="#claustro">Profesionales</a></li>
@@ -242,7 +258,7 @@
   <p class="hero-sub">El Programa Talentum Business acerca a los alumnos a las oportunidades profesionales más competitivas, preparándolos desde la universidad para destacar en los procesos de selección de Consultoría Estratégica y Banca de Inversión. Una experiencia práctica, de la mano de profesionales en activo, que les permite entender qué buscan las principales firmas y llegar al proceso realmente preparados.</p>
   <div class="cta-row">
     <a class="btn-primary" href="mailto:info@novatalent.com?subject=Talentum%20Business%20para%20{{UNIVERSIDAD}}">Quiero la propuesta completa →</a>
-    <a class="btn-secondary" href="#estructura">Ver estructura del programa <span class="chev"></span></a>
+    <a class="btn-secondary" href="#estructura">Ver estructura del programa <span class="material-symbols-outlined">chevron_right</span></a>
   </div>
   <div class="hero-stats">
     <div class="hero-stat"><div class="n">90</div><div class="l">NPS 2025</div></div>
@@ -289,12 +305,12 @@
     </div>
     <div class="feature-grid fade-in">
       <div class="feature-card">
-        <div class="feature-icon">🧑‍🏫</div>
+        <div class="feature-icon"><span class="material-symbols-outlined">handshake</span></div>
         <h4>Un tutor en cada track</h4>
         <p>Un profesional del sector acompaña a los alumnos a lo largo de las 6 sesiones, resolviendo dudas y dando continuidad al aprendizaje de principio a fin — no son ponentes puntuales y desconectados entre sí.</p>
       </div>
       <div class="feature-card">
-        <div class="feature-icon">🎤</div>
+        <div class="feature-icon"><span class="material-symbols-outlined">groups</span></div>
         <h4>Un día de simulación final</h4>
         <p>El programa cierra con una jornada de entrevistas simuladas en la que <strong>6 profesionales del sector</strong> dan feedback individual a cada alumno, ronda de fit y ronda técnica incluidas.</p>
       </div>
@@ -677,7 +693,13 @@
 </section>
 
 <footer>
-  <div class="footer-brand">Talentum Business — Programa desarrollado por Nova</div>
+  <div class="footer-brand">
+    <svg class="nova-logo" viewBox="0 0 369 112" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Nova">
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M195.098 55.9614C195.098 38.5557 206.473 26.3186 222.863 26.3186C239.242 26.3186 250.706 38.5557 250.706 55.9614C250.706 73.3672 239.175 85.5932 222.786 85.5932C206.396 85.5932 195.098 73.3672 195.098 55.9614ZM205.612 55.9614C205.612 68.2206 212.349 75.9516 222.863 75.9516C233.366 75.9516 240.114 68.2316 240.114 55.9614C240.114 43.6912 233.377 35.9603 222.863 35.9603C212.349 35.9603 205.612 43.7023 205.612 55.9614ZM139.191 27.3346L166.084 67.9554V27.3346H175.968V84.6544H166.084L139.114 44.0446V84.6544H129.229V27.3346H139.191ZM291.868 60.3459C290.763 63.2506 289.593 66.7847 288.179 71.7988C286.92 67.1713 285.826 63.8028 284.567 60.3459L272.021 27.3346H261.363L282.999 84.6544H293.348L314.685 27.3346H304.248L291.868 60.3459ZM337.955 27.3346H348.237L368.934 84.6544H358.342L353.715 71.4013H332.311L327.684 84.6544H317.258L337.955 27.3346ZM341.809 44.4422L335.304 62.9524H350.866L344.239 44.4422C343.742 43 343.351 41.5235 343.068 40.0245C342.737 41.5208 342.317 42.996 341.809 44.4422Z" fill="white"/>
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M77.1001 43.1279C50.9362 47.5456 27.7543 63.0076 12.977 85.0961C7.32076 93.2795 2.94484 102.277 0 111.779C17.5714 35.9381 50.3729 0 50.3729 0C50.3729 0 63.2064 14.0594 77.1001 43.1279ZM80.8441 52.7587L81.4626 52.6814C89.6966 71.823 96.1587 91.679 100.768 112C100.768 112 79.3421 90.486 54.0065 85.262C51.6085 84.7762 49.1374 84.7762 46.7394 85.262C21.8787 90.3866 0.795188 111.172 0 111.967C8.92534 94.6077 21.9701 79.701 37.9923 68.552C45.8549 63.227 54.4688 59.1062 63.5488 56.326C68.0653 54.969 72.6708 53.9283 77.332 53.2115C77.6848 53.1649 78.0366 53.1153 78.3883 53.0658C79.2036 52.9508 80.0185 52.8359 80.8441 52.7587Z" fill="#0EB0A4"/>
+    </svg>
+    <span>Talentum Business — Programa desarrollado por Nova</span>
+  </div>
   <div class="footer-right">Propuesta para {{UNIVERSIDAD}} · info@novatalent.com</div>
 </footer>
 
