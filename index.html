@@ -5,8 +5,6 @@
   :root{
     --teal: #0EB0A4;
     --teal-light: #14d4c6;
-    --gold: #D4A017;
-    --gold-light: #f0bb2a;
     --bg-primary: #090E12;
     --bg-secondary: #0f1920;
     --bg-card: #131C24;
@@ -114,7 +112,7 @@
 
   /* ---------- Context / evolución ---------- */
   .context-card{ background: var(--bg-card); border:1px solid rgba(14,176,164,0.15); border-radius:20px; padding:44px 44px 40px; position:relative; overflow:hidden; margin-top:36px; }
-  .context-card::before{ content:''; position:absolute; top:0; left:0; right:0; height:3px; background: linear-gradient(90deg, var(--teal) 0%, var(--gold) 100%); }
+  .context-card::before{ content:''; position:absolute; top:0; left:0; right:0; height:3px; background: linear-gradient(90deg, var(--teal) 0%, var(--teal-light) 100%); }
   .context-grid{ display:grid; grid-template-columns:1fr 1fr; gap:36px; }
   .context-item h4{ font-family:'DM Sans', sans-serif; font-weight:700; font-size:15px; margin-bottom:10px; display:flex; align-items:center; gap:10px; }
   .context-item .badge{ font-size:10.5px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; padding:3px 8px; border-radius:4px; }
@@ -126,9 +124,7 @@
 
   /* ---------- Track header (firms + disclaimer) ---------- */
   .track-firms{ display:flex; flex-wrap:wrap; gap:8px; margin-top:20px; }
-  .track-firm-chip{ font-size:12px; font-weight:600; padding:5px 12px; border-radius:6px; background: rgba(255,255,255,0.04); border:1px solid var(--border); color: var(--text-muted); }
-  .track-firm-chip.teal{ border-color: rgba(14,176,164,0.15); color: var(--teal); }
-  .track-firm-chip.gold{ border-color: rgba(212,160,23,0.15); color: var(--gold); }
+  .track-firm-chip{ font-size:12px; font-weight:600; padding:5px 12px; border-radius:6px; background: rgba(14,176,164,0.06); border:1px solid rgba(14,176,164,0.15); color: var(--teal); }
   .track-disclaimer{ font-size:12px; color:var(--text-muted); margin-top:12px; line-height:1.5; font-style:italic; }
 
   /* ---------- Feature cards (acompañamiento) ---------- */
@@ -141,7 +137,6 @@
     display:flex; align-items:center; justify-content:center;
     font-size:22px; margin-bottom:18px;
   }
-  .feature-card.gold .feature-icon{ background: rgba(212,160,23,0.14); color:var(--gold); }
   .feature-card h4{ font-family:'DM Sans', sans-serif; font-weight:700; font-size:17px; margin-bottom:10px; }
   .feature-card p{ font-size:14px; color:var(--text-secondary); line-height:1.6; }
   @media (max-width:700px){ .feature-grid{ grid-template-columns:1fr; } }
@@ -149,7 +144,7 @@
   /* ---------- Sessions accordion ---------- */
   .sessions-block{ margin-top:36px; margin-bottom:44px; }
   .sessions-block:last-child{ margin-bottom:0; }
-  .sessions-block-label{ font-size:11px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; padding:8px 0; margin-bottom:14px; border-bottom:1px solid var(--border); }
+  .sessions-block-label{ font-size:11px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; padding:8px 0; margin-bottom:14px; border-bottom:1px solid var(--border); color:var(--teal); }
   .session-item{ background: var(--bg-card); border-radius:12px; border:1px solid var(--border); margin-bottom:8px; overflow:hidden; transition:border-color 0.2s; }
   .session-toggle{ width:100%; display:flex; align-items:center; gap:16px; padding:18px 22px; background:none; border:none; cursor:pointer; text-align:left; color:inherit; font:inherit; }
   .session-num{ font-family:'DM Sans', sans-serif; font-weight:700; font-size:12px; width:24px; flex-shrink:0; color:var(--text-muted); }
@@ -199,7 +194,7 @@
   /* ---------- Pricing ---------- */
   .pricing-wrap{ margin-top:44px; }
   .pricing-card{ background: var(--bg-card); border:1px solid rgba(14,176,164,0.2); border-radius:20px; overflow:hidden; position:relative; }
-  .pricing-card::before{ content:''; position:absolute; top:0; left:0; right:0; height:3px; background: linear-gradient(90deg, var(--teal) 0%, var(--gold) 100%); }
+  .pricing-card::before{ content:''; position:absolute; top:0; left:0; right:0; height:3px; background: linear-gradient(90deg, var(--teal) 0%, var(--teal-light) 100%); }
   .pricing-card-head{ display:flex; align-items:flex-start; justify-content:space-between; flex-wrap:wrap; gap:22px; padding:40px 44px 32px; border-bottom:1px solid var(--border); }
   .pricing-card-name{ font-family:'DM Sans', sans-serif; font-size:24px; font-weight:700; margin-bottom:6px; }
   .pricing-card-meta{ font-size:13.5px; color:var(--text-muted); }
@@ -298,7 +293,7 @@
         <h4>Un tutor en cada track</h4>
         <p>Un profesional del sector acompaña a los alumnos a lo largo de las 6 sesiones, resolviendo dudas y dando continuidad al aprendizaje de principio a fin — no son ponentes puntuales y desconectados entre sí.</p>
       </div>
-      <div class="feature-card gold">
+      <div class="feature-card">
         <div class="feature-icon">🎤</div>
         <h4>Un día de simulación final</h4>
         <p>El programa cierra con una jornada de entrevistas simuladas en la que <strong>6 profesionales del sector</strong> dan feedback individual a cada alumno, ronda de fit y ronda técnica incluidas.</p>
@@ -311,23 +306,23 @@
 <section id="consultoria" class="alt">
   <div class="container">
     <div class="fade-in">
-      <span class="section-label" style="color:var(--teal)">Track 1</span>
+      <span class="section-label">Track 1</span>
       <h2 class="section-title">Consultoría Estratégica</h2>
       <p class="section-sub">Preparación integral para acceder a las mejores firmas de consultoría: application timelines, online tests, case interview y simulación real de entrevistas.</p>
       <div class="track-firms">
-        <span class="track-firm-chip teal">McKinsey</span>
-        <span class="track-firm-chip teal">BCG</span>
-        <span class="track-firm-chip teal">Bain</span>
-        <span class="track-firm-chip teal">Oliver Wyman</span>
-        <span class="track-firm-chip teal">Roland Berger</span>
-        <span class="track-firm-chip teal">Strategy&amp;</span>
-        <span class="track-firm-chip teal">Kearney</span>
+        <span class="track-firm-chip">McKinsey</span>
+        <span class="track-firm-chip">BCG</span>
+        <span class="track-firm-chip">Bain</span>
+        <span class="track-firm-chip">Oliver Wyman</span>
+        <span class="track-firm-chip">Roland Berger</span>
+        <span class="track-firm-chip">Strategy&amp;</span>
+        <span class="track-firm-chip">Kearney</span>
       </div>
       <p class="track-disclaimer">* Ejemplos de firmas de referencia. Los profesionales del programa son consultores y ex-consultores de top tier; Nova no garantiza representación de firmas específicas.</p>
     </div>
 
     <div class="sessions-block fade-in">
-      <div class="sessions-block-label" style="color:var(--teal)">El programa · 6 sesiones</div>
+      <div class="sessions-block-label">El programa · 6 sesiones</div>
 
       <div class="session-item">
         <button class="session-toggle" onclick="toggle(this)">
@@ -434,23 +429,23 @@
 <section id="banca">
   <div class="container">
     <div class="fade-in">
-      <span class="section-label" style="color:var(--gold)">Track 2</span>
+      <span class="section-label">Track 2</span>
       <h2 class="section-title">Banca de Inversión</h2>
       <p class="section-sub">Dominio técnico y preparación completa para entrar como Analyst en los mejores bancos de inversión del mundo.</p>
       <div class="track-firms">
-        <span class="track-firm-chip gold">J.P. Morgan</span>
-        <span class="track-firm-chip gold">Morgan Stanley</span>
-        <span class="track-firm-chip gold">Goldman Sachs</span>
-        <span class="track-firm-chip gold">Citi</span>
-        <span class="track-firm-chip gold">Deutsche Bank</span>
-        <span class="track-firm-chip gold">Rothschild</span>
-        <span class="track-firm-chip gold">Lazard</span>
+        <span class="track-firm-chip">J.P. Morgan</span>
+        <span class="track-firm-chip">Morgan Stanley</span>
+        <span class="track-firm-chip">Goldman Sachs</span>
+        <span class="track-firm-chip">Citi</span>
+        <span class="track-firm-chip">Deutsche Bank</span>
+        <span class="track-firm-chip">Rothschild</span>
+        <span class="track-firm-chip">Lazard</span>
       </div>
       <p class="track-disclaimer">* Ejemplos de bancos de referencia. Los profesionales del programa son banqueros y ex-banqueros de bulge brackets y boutiques; Nova no garantiza representación de entidades específicas.</p>
     </div>
 
     <div class="sessions-block fade-in">
-      <div class="sessions-block-label" style="color:var(--gold)">El programa · 6 sesiones</div>
+      <div class="sessions-block-label">El programa · 6 sesiones</div>
 
       <div class="session-item">
         <button class="session-toggle" onclick="toggle(this)">
