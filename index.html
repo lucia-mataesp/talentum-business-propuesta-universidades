@@ -1,0 +1,695 @@
+<title>Talentum Business</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Open+Sans:wght@400;500;600;700&display=swap');
+
+  :root{
+    --teal: #0EB0A4;
+    --teal-light: #14d4c6;
+    --gold: #D4A017;
+    --gold-light: #f0bb2a;
+    --bg-primary: #090E12;
+    --bg-secondary: #0f1920;
+    --bg-card: #131C24;
+    --bg-card-hover: #1a2633;
+    --text-primary: #ffffff;
+    --text-secondary: #a0aeb8;
+    --text-muted: #6b7a86;
+    --border: rgba(255,255,255,0.07);
+  }
+
+  *, *::before, *::after{ margin:0; padding:0; box-sizing:border-box; }
+  html{ scroll-behavior: smooth; }
+  body{
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ---------- Nav ---------- */
+  nav{
+    position: sticky; top: 0; z-index: 100;
+    padding: 16px 40px;
+    display: flex; align-items: center; justify-content: space-between;
+    background: rgba(9,14,18,0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-brand{ font-family:'DM Sans', sans-serif; font-weight:600; font-size:14px; color:var(--text-primary); }
+  .nav-links{ display:flex; align-items:center; gap:26px; list-style:none; }
+  .nav-links a{ color:var(--text-muted); text-decoration:none; font-size:13px; font-weight:500; transition:color 0.2s; }
+  .nav-links a:hover{ color:var(--teal); }
+  .nav-cta{
+    background: var(--teal); color: var(--bg-primary) !important;
+    padding:8px 18px; border-radius:100px; font-weight:700 !important;
+  }
+  .nav-cta:hover{ background: var(--teal-light) !important; color:var(--bg-primary) !important; }
+  @media (max-width:820px){ .nav-links a:not(.nav-cta){ display:none; } }
+
+  /* ---------- Buttons ---------- */
+  .btn-primary{
+    display:inline-flex; align-items:center; gap:8px;
+    background: var(--teal); color: var(--bg-primary);
+    font-family:'DM Sans', sans-serif; font-weight:700; font-size:14.5px;
+    padding:14px 28px; border-radius:100px; text-decoration:none;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .btn-primary:hover{ background: var(--teal-light); transform: translateY(-1px); }
+  .btn-secondary{
+    display:inline-flex; align-items:center; gap:6px;
+    color: var(--text-secondary); text-decoration:none;
+    font-size:14px; font-weight:600; transition: color 0.2s;
+  }
+  .btn-secondary:hover{ color: var(--teal); }
+  .btn-secondary .chev{
+    width:6px; height:6px; border-right:1.5px solid currentColor; border-bottom:1.5px solid currentColor;
+    transform: rotate(-45deg); margin-top:-2px;
+  }
+  .cta-row{ display:flex; align-items:center; gap:28px; flex-wrap:wrap; }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    max-width: 1000px; margin:0 auto;
+    padding: 84px 40px 68px;
+    position:relative; overflow:hidden;
+  }
+  .hero::before{
+    content:''; position:absolute; top:-180px; left:50%; transform:translateX(-50%);
+    width:900px; height:700px;
+    background: radial-gradient(circle, rgba(14,176,164,0.08) 0%, transparent 65%);
+    pointer-events:none;
+  }
+  .hero-eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    background: rgba(14,176,164,0.08); border:1px solid rgba(14,176,164,0.22);
+    border-radius:100px; padding:6px 16px;
+    font-size:13px; font-weight:600; color:var(--teal);
+    letter-spacing:0.03em; margin-bottom:26px; position:relative;
+  }
+  .hero-eyebrow .dot{ width:6px; height:6px; background:var(--teal); border-radius:50%; }
+  .hero h1{
+    font-family:'DM Sans', sans-serif; font-weight:700;
+    font-size: clamp(36px, 6vw, 60px); line-height:1.06; letter-spacing:-1.5px;
+    max-width:700px; margin-bottom:22px; position:relative;
+  }
+  .hero h1 .teal{ color:var(--teal); }
+  .hero-sub{
+    font-size: clamp(14.5px, 1.4vw, 17px); color:var(--text-secondary);
+    max-width:660px; line-height:1.7; margin-bottom:36px; position:relative;
+  }
+  .hero-stats{ display:flex; align-items:center; gap:32px; flex-wrap:wrap; margin-top:44px; position:relative; }
+  .hero-stat{ text-align:left; }
+  .hero-stat .n{ font-family:'DM Sans', sans-serif; font-weight:700; font-size:28px; color:var(--teal); line-height:1; }
+  .hero-stat .l{ font-size:11.5px; color:var(--text-muted); margin-top:6px; }
+  .hero-divider{ width:1px; height:34px; background:var(--border); }
+
+  /* ---------- Shared section ---------- */
+  section{ padding: 76px 40px; }
+  section.alt{ background: var(--bg-secondary); }
+  .container{ max-width:1000px; margin:0 auto; }
+  .section-label{ display:inline-block; color:var(--teal); font-family:'DM Sans', sans-serif; font-weight:600; font-size:12px; text-transform:uppercase; letter-spacing:0.14em; margin-bottom:12px; }
+  .section-title{ font-family:'DM Sans', sans-serif; font-size:clamp(23px, 2.8vw, 32px); font-weight:700; line-height:1.2; letter-spacing:-0.5px; margin-bottom:14px; }
+  .section-sub{ font-size:15.5px; color:var(--text-secondary); max-width:640px; line-height:1.65; }
+
+  /* ---------- Context / evolución ---------- */
+  .context-card{ background: var(--bg-card); border:1px solid rgba(14,176,164,0.15); border-radius:20px; padding:44px 44px 40px; position:relative; overflow:hidden; margin-top:36px; }
+  .context-card::before{ content:''; position:absolute; top:0; left:0; right:0; height:3px; background: linear-gradient(90deg, var(--teal) 0%, var(--gold) 100%); }
+  .context-grid{ display:grid; grid-template-columns:1fr 1fr; gap:36px; }
+  .context-item h4{ font-family:'DM Sans', sans-serif; font-weight:700; font-size:15px; margin-bottom:10px; display:flex; align-items:center; gap:10px; }
+  .context-item .badge{ font-size:10.5px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; padding:3px 8px; border-radius:4px; }
+  .badge-before{ background: rgba(255,255,255,0.06); color: var(--text-muted); }
+  .badge-now{ background: rgba(14,176,164,0.15); color: var(--teal); }
+  .context-item p{ font-size:14px; color:var(--text-secondary); line-height:1.6; }
+  .context-grid.cols-3{ grid-template-columns: repeat(3,1fr); }
+  @media (max-width:700px){ .context-grid{ grid-template-columns:1fr; } .context-card{ padding:32px 26px; } }
+
+  /* ---------- Track header (firms + disclaimer) ---------- */
+  .track-firms{ display:flex; flex-wrap:wrap; gap:8px; margin-top:20px; }
+  .track-firm-chip{ font-size:12px; font-weight:600; padding:5px 12px; border-radius:6px; background: rgba(255,255,255,0.04); border:1px solid var(--border); color: var(--text-muted); }
+  .track-firm-chip.teal{ border-color: rgba(14,176,164,0.15); color: var(--teal); }
+  .track-firm-chip.gold{ border-color: rgba(212,160,23,0.15); color: var(--gold); }
+  .track-disclaimer{ font-size:12px; color:var(--text-muted); margin-top:12px; line-height:1.5; font-style:italic; }
+
+  /* ---------- Feature cards (acompañamiento) ---------- */
+  .feature-grid{ display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:40px; }
+  .feature-card{ background: var(--bg-card); border:1px solid var(--border); border-radius:16px; padding:32px 30px; transition:border-color 0.2s; }
+  .feature-card:hover{ border-color: rgba(14,176,164,0.2); }
+  .feature-icon{
+    width:48px; height:48px; border-radius:12px;
+    background: rgba(14,176,164,0.12); color:var(--teal);
+    display:flex; align-items:center; justify-content:center;
+    font-size:22px; margin-bottom:18px;
+  }
+  .feature-card.gold .feature-icon{ background: rgba(212,160,23,0.14); color:var(--gold); }
+  .feature-card h4{ font-family:'DM Sans', sans-serif; font-weight:700; font-size:17px; margin-bottom:10px; }
+  .feature-card p{ font-size:14px; color:var(--text-secondary); line-height:1.6; }
+  @media (max-width:700px){ .feature-grid{ grid-template-columns:1fr; } }
+
+  /* ---------- Sessions accordion ---------- */
+  .sessions-block{ margin-top:36px; margin-bottom:44px; }
+  .sessions-block:last-child{ margin-bottom:0; }
+  .sessions-block-label{ font-size:11px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; padding:8px 0; margin-bottom:14px; border-bottom:1px solid var(--border); }
+  .session-item{ background: var(--bg-card); border-radius:12px; border:1px solid var(--border); margin-bottom:8px; overflow:hidden; transition:border-color 0.2s; }
+  .session-toggle{ width:100%; display:flex; align-items:center; gap:16px; padding:18px 22px; background:none; border:none; cursor:pointer; text-align:left; color:inherit; font:inherit; }
+  .session-num{ font-family:'DM Sans', sans-serif; font-weight:700; font-size:12px; width:24px; flex-shrink:0; color:var(--text-muted); }
+  .session-title{ font-family:'DM Sans', sans-serif; font-weight:600; font-size:15px; color:var(--text-primary); flex:1; }
+  .session-dur{ font-size:12px; color:var(--text-muted); white-space:nowrap; background: rgba(255,255,255,0.05); padding:3px 10px; border-radius:100px; flex-shrink:0; }
+  .session-chevron{ width:15px; height:15px; flex-shrink:0; border-right:1.5px solid var(--text-muted); border-bottom:1.5px solid var(--text-muted); transform:rotate(45deg); transition:transform 0.2s; margin-top:-4px; }
+  .session-item.open .session-chevron{ transform:rotate(-135deg); margin-top:4px; }
+  .session-body{ display:none; padding:0 22px 22px 62px; }
+  .session-item.open .session-body{ display:block; }
+  .session-objective{ font-size:13px; color:var(--text-secondary); line-height:1.6; padding-left:12px; border-left:2px solid var(--border); margin-bottom:16px; font-style:italic; }
+  .session-topics{ list-style:none; display:flex; flex-direction:column; gap:12px; }
+  .session-topic-title{ font-size:13px; font-weight:600; color:var(--text-primary); margin-bottom:4px; }
+  .session-topic ul{ list-style:none; display:flex; flex-direction:column; gap:3px; padding-left:12px; }
+  .session-topic ul li{ font-size:13px; color:var(--text-muted); padding-left:12px; position:relative; }
+  .session-topic ul li::before{ content:'–'; position:absolute; left:0; color:var(--text-muted); }
+  .session-footnote{ font-size:12px; color:var(--text-muted); margin-top:12px; }
+
+  /* ---------- Claustro ---------- */
+  .claustro-grid{ display:grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap:20px; margin-top:44px; }
+  .claustro-card{ background: var(--bg-card); border-radius:16px; border:1px solid var(--border); padding:26px 26px 22px; transition:border-color 0.3s; }
+  .claustro-card:hover{ border-color: rgba(14,176,164,0.2); }
+  .claustro-role{ font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--teal); margin-bottom:8px; }
+  .claustro-name{ font-family:'DM Sans', sans-serif; font-size:15.5px; font-weight:700; margin-bottom:10px; }
+  .claustro-firms{ display:flex; flex-wrap:wrap; gap:6px; }
+  .claustro-firm{ font-size:11px; color:var(--text-muted); background: rgba(255,255,255,0.04); border:1px solid var(--border); border-radius:4px; padding:3px 8px; }
+  .firms-disclaimer{ font-size:12px; color:var(--text-muted); margin-top:22px; line-height:1.5; font-style:italic; }
+
+  /* ---------- Stat grids (resultados + empleabilidad) ---------- */
+  .stats-grid{ display:grid; grid-template-columns: repeat(4,1fr); gap:1px; background:var(--border); border-radius:16px; overflow:hidden; border:1px solid var(--border); margin-top:44px; }
+  .stats-grid.cols-3{ grid-template-columns: repeat(3,1fr); }
+  .stat-tile{ background: var(--bg-card); padding:26px 20px; text-align:center; }
+  .stat-tile .n{ font-family:'DM Sans', sans-serif; font-size:32px; font-weight:700; color:var(--teal); line-height:1; }
+  .stat-tile .l{ font-size:11.5px; color:var(--text-muted); margin-top:6px; text-transform:uppercase; letter-spacing:0.05em; }
+  @media (max-width:640px){ .stats-grid, .stats-grid.cols-3{ grid-template-columns: 1fr 1fr; } }
+  .results-caption{ font-size:12px; color:var(--text-muted); margin-top:14px; }
+  .quotes{ display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:32px; }
+  .quote-card{ background: var(--bg-card); border-radius:16px; border:1px solid var(--border); padding:26px 28px; }
+  .quote-mark{ font-family:'DM Sans', sans-serif; font-size:42px; font-weight:700; color:var(--teal); line-height:0.8; margin-bottom:10px; opacity:0.4; }
+  .quote-text{ font-size:13.5px; color:var(--text-secondary); line-height:1.7; font-style:italic; margin-bottom:14px; }
+  .quote-author{ font-size:12px; color:var(--text-muted); }
+  @media (max-width:640px){ .quotes{ grid-template-columns:1fr; } }
+
+  /* ---------- Empleabilidad firms ---------- */
+  .firm-chips{ display:flex; flex-wrap:wrap; gap:8px; margin-top:24px; }
+  .firm-chip{ font-size:12.5px; font-weight:600; padding:6px 14px; border-radius:100px; background: rgba(14,176,164,0.08); border:1px solid rgba(14,176,164,0.2); color:var(--teal); }
+
+  /* ---------- Pricing ---------- */
+  .pricing-wrap{ margin-top:44px; }
+  .pricing-card{ background: var(--bg-card); border:1px solid rgba(14,176,164,0.2); border-radius:20px; overflow:hidden; position:relative; }
+  .pricing-card::before{ content:''; position:absolute; top:0; left:0; right:0; height:3px; background: linear-gradient(90deg, var(--teal) 0%, var(--gold) 100%); }
+  .pricing-card-head{ display:flex; align-items:flex-start; justify-content:space-between; flex-wrap:wrap; gap:22px; padding:40px 44px 32px; border-bottom:1px solid var(--border); }
+  .pricing-card-name{ font-family:'DM Sans', sans-serif; font-size:24px; font-weight:700; margin-bottom:6px; }
+  .pricing-card-meta{ font-size:13.5px; color:var(--text-muted); }
+  .pricing-card-price{ font-family:'DM Sans', sans-serif; font-size:44px; font-weight:300; letter-spacing:-1.5px; line-height:1; color:var(--teal); }
+  .pricing-card-price-note{ font-size:13px; color:var(--text-muted); margin-top:8px; text-align:right; }
+  .pricing-card-body{ padding:32px 44px 40px; }
+  .pricing-card-body-label{ font-size:11px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--text-muted); margin-bottom:16px; }
+  .includes-list{ list-style:none; display:grid; grid-template-columns:1fr 1fr; gap:12px 32px; margin-bottom:32px; }
+  .includes-list li{ font-size:13.5px; color:var(--text-secondary); padding-left:20px; position:relative; line-height:1.5; }
+  .includes-list li::before{ content:''; position:absolute; left:0; top:8px; width:6px; height:6px; border-radius:50%; background:var(--teal); }
+  @media (max-width:640px){
+    .pricing-card-head{ padding:28px 24px 24px; }
+    .pricing-card-body{ padding:24px 24px 28px; }
+    .includes-list{ grid-template-columns:1fr; }
+  }
+
+  footer{ padding:36px 40px; background: var(--bg-primary); border-top:1px solid var(--border); display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:14px; }
+  .footer-brand{ font-family:'DM Sans', sans-serif; font-weight:600; font-size:13px; color:var(--text-secondary); }
+  .footer-right{ font-size:13px; color:var(--text-muted); }
+
+  .fade-in{ opacity:0; transform:translateY(20px); transition:opacity 0.6s ease, transform 0.6s ease; }
+  .fade-in.visible{ opacity:1; transform:translateY(0); }
+  @media (prefers-reduced-motion: reduce){ .fade-in{ opacity:1; transform:none; transition:none; } }
+
+  @media (max-width:640px){
+    nav, .hero, section{ padding-left:22px; padding-right:22px; }
+    .session-body{ padding-left:22px; }
+  }
+</style>
+
+<nav>
+  <span class="nav-brand">Nova — Talentum Business</span>
+  <ul class="nav-links">
+    <li><a href="#estructura">Estructura</a></li>
+    <li><a href="#claustro">Profesionales</a></li>
+    <li><a href="#resultados">Resultados</a></li>
+    <li><a href="#inversion">Inversión</a></li>
+    <li><a class="nav-cta" href="mailto:info@novatalent.com?subject=Talentum%20Business%20para%20{{UNIVERSIDAD}}">Hablemos</a></li>
+  </ul>
+</nav>
+
+<div class="hero">
+  <div class="hero-eyebrow"><div class="dot"></div>Propuesta para {{UNIVERSIDAD}} · Curso 2026/27</div>
+  <h1>Talentum <span class="teal">Business</span></h1>
+  <p class="hero-sub">El Programa Talentum Business acerca a los alumnos a las oportunidades profesionales más competitivas, preparándolos desde la universidad para destacar en los procesos de selección de Consultoría Estratégica y Banca de Inversión. Una experiencia práctica, de la mano de profesionales en activo, que les permite entender qué buscan las principales firmas y llegar al proceso realmente preparados.</p>
+  <div class="cta-row">
+    <a class="btn-primary" href="mailto:info@novatalent.com?subject=Talentum%20Business%20para%20{{UNIVERSIDAD}}">Quiero la propuesta completa →</a>
+    <a class="btn-secondary" href="#estructura">Ver estructura del programa <span class="chev"></span></a>
+  </div>
+  <div class="hero-stats">
+    <div class="hero-stat"><div class="n">90</div><div class="l">NPS 2025</div></div>
+    <div class="hero-divider"></div>
+    <div class="hero-stat"><div class="n">0</div><div class="l">Detractores</div></div>
+    <div class="hero-divider"></div>
+    <div class="hero-stat"><div class="n">100%</div><div class="l">Profesorado superó expectativas</div></div>
+  </div>
+</div>
+
+<section id="programa" class="alt">
+  <div class="container">
+    <div class="fade-in">
+      <span class="section-label">La propuesta</span>
+      <h2 class="section-title">Un programa, dos caminos.<br>Cada uno con la profundidad que merece.</h2>
+      <p class="section-sub" style="margin-bottom:14px;">Tras tres ediciones junto a CEU San Pablo y un NPS de 90 en 2025, con 0 detractores, hemos evolucionado Talentum Business para ofrecer una preparación aún más especializada.</p>
+      <p class="section-sub">Dos tracks independientes —Consultoría Estratégica y Banca de Inversión—, diseñados con la profundidad técnica que exige cada proceso de selección.</p>
+    </div>
+    <div class="context-card fade-in">
+      <div class="context-grid cols-3">
+        <div class="context-item">
+          <h4><span class="badge badge-now">Nuevo</span> Dos tracks independientes</h4>
+          <p>Cada alumno elige su camino desde el inicio. Consultoría Estratégica y Banca de Inversión como programas autónomos, con contenido 100% especializado para cada industria.</p>
+        </div>
+        <div class="context-item">
+          <h4><span class="badge badge-now">Nuevo</span> Más profundidad técnica y foco en la entrevista</h4>
+          <p>Cada sesión presencial sube el nivel técnico y se centra en lo que de verdad decide un proceso: conocimiento técnico, casos, tests y entrevistas reales con profesionales del sector.</p>
+        </div>
+        <div class="context-item">
+          <h4><span class="badge badge-before">Mantenemos</span> Profesionales top tier</h4>
+          <p>Lo más valorado de la edición 2025 (100% del profesorado superó expectativas) se mantiene y se amplía: más sesiones con consultores de MBB y banqueros de bulge brackets.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="acompanamiento">
+  <div class="container">
+    <div class="fade-in">
+      <span class="section-label">Cómo os acompañamos</span>
+      <h2 class="section-title">No es un curso online. Es acompañamiento real</h2>
+      <p class="section-sub">Dos elementos que marcan la diferencia frente a prepararse por libre o con contenido genérico.</p>
+    </div>
+    <div class="feature-grid fade-in">
+      <div class="feature-card">
+        <div class="feature-icon">🧑‍🏫</div>
+        <h4>Un tutor en cada track</h4>
+        <p>Un profesional del sector acompaña a los alumnos a lo largo de las 6 sesiones, resolviendo dudas y dando continuidad al aprendizaje de principio a fin — no son ponentes puntuales y desconectados entre sí.</p>
+      </div>
+      <div class="feature-card gold">
+        <div class="feature-icon">🎤</div>
+        <h4>Un día de simulación final</h4>
+        <p>El programa cierra con una jornada de entrevistas simuladas en la que <strong>6 profesionales del sector</strong> dan feedback individual a cada alumno, ronda de fit y ronda técnica incluidas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="estructura">
+<section id="consultoria" class="alt">
+  <div class="container">
+    <div class="fade-in">
+      <span class="section-label" style="color:var(--teal)">Track 1</span>
+      <h2 class="section-title">Consultoría Estratégica</h2>
+      <p class="section-sub">Preparación integral para acceder a las mejores firmas de consultoría: application timelines, online tests, case interview y simulación real de entrevistas.</p>
+      <div class="track-firms">
+        <span class="track-firm-chip teal">McKinsey</span>
+        <span class="track-firm-chip teal">BCG</span>
+        <span class="track-firm-chip teal">Bain</span>
+        <span class="track-firm-chip teal">Oliver Wyman</span>
+        <span class="track-firm-chip teal">Roland Berger</span>
+        <span class="track-firm-chip teal">Strategy&amp;</span>
+        <span class="track-firm-chip teal">Kearney</span>
+      </div>
+      <p class="track-disclaimer">* Ejemplos de firmas de referencia. Los profesionales del programa son consultores y ex-consultores de top tier; Nova no garantiza representación de firmas específicas.</p>
+    </div>
+
+    <div class="sessions-block fade-in">
+      <div class="sessions-block-label" style="color:var(--teal)">El programa · 6 sesiones</div>
+
+      <div class="session-item">
+        <button class="session-toggle" onclick="toggle(this)">
+          <span class="session-num">S1</span>
+          <span class="session-title">Industria + Marca Personal + Application Timelines</span>
+          <span class="session-dur">2h</span>
+          <div class="session-chevron"></div>
+        </button>
+        <div class="session-body">
+          <p class="session-objective">Objetivo: entender el sector y la ruta profesional, y construir una marca personal sólida antes de aplicar.</p>
+          <ul class="session-topics">
+            <li class="session-topic"><div class="session-topic-title">La industria de la Consultoría Estratégica</div><ul><li>Landscape: MBB, Big 4 Strategy, boutiques especializadas</li><li>Proceso de selección de inicio a fin: application → online test → primera ronda → superday</li><li>Career path: analyst/associate → manager → principal → partner</li></ul></li>
+            <li class="session-topic"><div class="session-topic-title">Marca Personal + Storytelling</div><ul><li>CV orientado a MBB, LinkedIn para consulting, cover letter</li><li>Tu narrativa profesional: why consulting, why this firm, why now</li></ul></li>
+            <li class="session-topic"><div class="session-topic-title">Application Timelines &amp; Networking</div><ul><li>Calendario de procesos por firma</li><li>Coffee chats, informational interviews y referrals</li></ul></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="session-item">
+        <button class="session-toggle" onclick="toggle(this)">
+          <span class="session-num">S2</span>
+          <span class="session-title">Online Tests &amp; Screening</span>
+          <span class="session-dur">2h</span>
+          <div class="session-chevron"></div>
+        </button>
+        <div class="session-body">
+          <p class="session-objective">Objetivo: preparar con garantías los tests online de McKinsey, BCG y Bain — el primer filtro de cualquier proceso.</p>
+          <ul class="session-topics">
+            <li class="session-topic"><div class="session-topic-title">Tests por firma</div><ul><li>McKinsey Solve, BCG Potential Test, Bain Online Assessment</li></ul></li>
+            <li class="session-topic"><div class="session-topic-title">Estrategia general</div><ul><li>Cuánto tiempo dedicar y cuándo empezar</li></ul></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="session-item">
+        <button class="session-toggle" onclick="toggle(this)">
+          <span class="session-num">S3</span>
+          <span class="session-title">Case Interview I — Frameworks y MECE</span>
+          <span class="session-dur">3h</span>
+          <div class="session-chevron"></div>
+        </button>
+        <div class="session-body">
+          <p class="session-objective">Objetivo: aprender a estructurar cualquier problema de negocio de forma MECE, sin depender de frameworks memorizados.</p>
+          <ul class="session-topics">
+            <li class="session-topic"><div class="session-topic-title">Qué busca realmente el entrevistador</div><ul><li>Structured thinking, no memorized frameworks</li></ul></li>
+            <li class="session-topic"><div class="session-topic-title">MECE thinking</div><ul><li>Descomponer un problema de forma exhaustiva sin solapamientos</li></ul></li>
+            <li class="session-topic"><div class="session-topic-title">Frameworks clásicos</div><ul><li>Profitability, market entry, M&amp;A, operations — y cuándo NO usarlos</li></ul></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="session-item">
+        <button class="session-toggle" onclick="toggle(this)">
+          <span class="session-num">S4</span>
+          <span class="session-title">Case Interview II — Cuantitativo</span>
+          <span class="session-dur">3h</span>
+          <div class="session-chevron"></div>
+        </button>
+        <div class="session-body">
+          <p class="session-objective">Objetivo: ganar velocidad y precisión en market sizing, mental math e interpretación de datos.</p>
+          <ul class="session-topics">
+            <li class="session-topic"><div class="session-topic-title">Market Sizing</div><ul><li>Top-down y bottom-up, cronometrados con feedback</li></ul></li>
+            <li class="session-topic"><div class="session-topic-title">Mental Math</div><ul><li>Trucos de cálculo rápido</li></ul></li>
+            <li class="session-topic"><div class="session-topic-title">Chart &amp; Graph Interpretation</div><ul><li>Leer un gráfico en 30 segundos</li></ul></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="session-item">
+        <button class="session-toggle" onclick="toggle(this)">
+          <span class="session-num">S5</span>
+          <span class="session-title">Case Interview III — Casos Avanzados</span>
+          <span class="session-dur">3h</span>
+          <div class="session-chevron"></div>
+        </button>
+        <div class="session-body">
+          <p class="session-objective">Objetivo: enfrentarse a casos avanzados y sectoriales al nivel de una fase final real.</p>
+          <ul class="session-topics">
+            <li class="session-topic"><div class="session-topic-title">Casos sectoriales</div><ul><li>Tech, Healthcare, Private Equity</li></ul></li>
+            <li class="session-topic"><div class="session-topic-title">Técnicas avanzadas</div><ul><li>Doble entrevistador y debrief grupal</li></ul></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="session-item">
+        <button class="session-toggle" onclick="toggle(this)">
+          <span class="session-num">S6</span>
+          <span class="session-title">Mock Interviews — Superday Simulation</span>
+          <span class="session-dur">3h</span>
+          <div class="session-chevron"></div>
+        </button>
+        <div class="session-body">
+          <p class="session-objective">Objetivo: vivir una simulación completa de Superday — fit y case — con consultores reales y feedback inmediato.</p>
+          <ul class="session-topics">
+            <li class="session-topic"><div class="session-topic-title">Simulación completa con consultores reales</div><ul><li>Ronda 1: Fit interview / PEI + feedback</li><li>Ronda 2: Case interview completo + feedback</li><li>Cierre: Q&amp;A con los consultores</li></ul></li>
+          </ul>
+          <p class="session-footnote">*Con consultores de McKinsey, BCG, Bain y otras firmas top tier</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="banca">
+  <div class="container">
+    <div class="fade-in">
+      <span class="section-label" style="color:var(--gold)">Track 2</span>
+      <h2 class="section-title">Banca de Inversión</h2>
+      <p class="section-sub">Dominio técnico y preparación completa para entrar como Analyst en los mejores bancos de inversión del mundo.</p>
+      <div class="track-firms">
+        <span class="track-firm-chip gold">J.P. Morgan</span>
+        <span class="track-firm-chip gold">Morgan Stanley</span>
+        <span class="track-firm-chip gold">Goldman Sachs</span>
+        <span class="track-firm-chip gold">Citi</span>
+        <span class="track-firm-chip gold">Deutsche Bank</span>
+        <span class="track-firm-chip gold">Rothschild</span>
+        <span class="track-firm-chip gold">Lazard</span>
+      </div>
+      <p class="track-disclaimer">* Ejemplos de bancos de referencia. Los profesionales del programa son banqueros y ex-banqueros de bulge brackets y boutiques; Nova no garantiza representación de entidades específicas.</p>
+    </div>
+
+    <div class="sessions-block fade-in">
+      <div class="sessions-block-label" style="color:var(--gold)">El programa · 6 sesiones</div>
+
+      <div class="session-item">
+        <button class="session-toggle" onclick="toggle(this)">
+          <span class="session-num">S1</span>
+          <span class="session-title">Industria + Marca Personal</span>
+          <span class="session-dur">2h</span>
+          <div class="session-chevron"></div>
+        </button>
+        <div class="session-body">
+          <p class="session-objective">Objetivo: entender cómo funciona el sector y construir la narrativa personal que sostendrá todo el proceso.</p>
+          <ul class="session-topics">
+            <li class="session-topic"><div class="session-topic-title">La industria de la Banca de Inversión</div><ul><li>Front, middle, back office; M&amp;A, ECM, DCM, LevFin, Restructuring, S&amp;T, Research</li><li>Bulge brackets vs boutiques vs regional banks</li><li>Career path y procesos: Spring Week, Summer Internship, Full-time</li></ul></li>
+            <li class="session-topic"><div class="session-topic-title">Marca Personal + Storytelling</div><ul><li>CV, cover letter y narrativa: why IB, why this bank, why this group</li></ul></li>
+            <li class="session-topic"><div class="session-topic-title">Networking &amp; Spring Week</div><ul><li>Cómo aplicar, informational interviews y referrals</li></ul></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="session-item">
+        <button class="session-toggle" onclick="toggle(this)">
+          <span class="session-num">S2</span>
+          <span class="session-title">Técnicas I — Fundamentos Financieros</span>
+          <span class="session-dur">3h</span>
+          <div class="session-chevron"></div>
+        </button>
+        <div class="session-body">
+          <p class="session-objective">Objetivo: dominar los fundamentos contables y financieros que sostienen cualquier pregunta técnica de IB.</p>
+          <ul class="session-topics">
+            <li class="session-topic"><div class="session-topic-title">Accounting</div><ul><li>Income Statement, Balance Sheet, Cash Flow Statement y cómo se conectan</li></ul></li>
+            <li class="session-topic"><div class="session-topic-title">Conceptos clave</div><ul><li>TVM, NPV, IRR, Enterprise vs Equity Value, WACC</li></ul></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="session-item">
+        <button class="session-toggle" onclick="toggle(this)">
+          <span class="session-num">S3</span>
+          <span class="session-title">Técnicas II — Valoración</span>
+          <span class="session-dur">3h</span>
+          <div class="session-chevron"></div>
+        </button>
+        <div class="session-body">
+          <p class="session-objective">Objetivo: aprender a construir y defender una valoración completa — DCF, comparables y precedentes.</p>
+          <ul class="session-topics">
+            <li class="session-topic"><div class="session-topic-title">DCF paso a paso</div><ul><li>Free Cash Flow to Firm y terminal value</li></ul></li>
+            <li class="session-topic"><div class="session-topic-title">Comparable Companies y Precedent Transactions</div><ul><li>Peer group, múltiplos clave y football field</li></ul></li>
+            <li class="session-topic"><div class="session-topic-title">Top preguntas técnicas de entrevista de IB</div><ul><li>Las 20 más frecuentes, con respuestas modelo</li></ul></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="session-item">
+        <button class="session-toggle" onclick="toggle(this)">
+          <span class="session-num">S4</span>
+          <span class="session-title">Técnicas III — M&amp;A y LBO</span>
+          <span class="session-dur">3h</span>
+          <div class="session-chevron"></div>
+        </button>
+        <div class="session-body">
+          <p class="session-objective">Objetivo: entender M&amp;A y LBO al nivel que se exige en una entrevista técnica de analyst.</p>
+          <ul class="session-topics">
+            <li class="session-topic"><div class="session-topic-title">M&amp;A</div><ul><li>Buy-side y sell-side, accretion/dilution, sinergias</li></ul></li>
+            <li class="session-topic"><div class="session-topic-title">LBO Basics</div><ul><li>Estructura de capital y métricas: MOIC, IRR, cash-on-cash</li></ul></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="session-item">
+        <button class="session-toggle" onclick="toggle(this)">
+          <span class="session-num">S5</span>
+          <span class="session-title">Online Tests &amp; Screening</span>
+          <span class="session-dur">2h</span>
+          <div class="session-chevron"></div>
+        </button>
+        <div class="session-body">
+          <p class="session-objective">Objetivo: llegar entrenado a los tests online y al HireVue, con la técnica ya interiorizada.</p>
+          <ul class="session-topics">
+            <li class="session-topic"><div class="session-topic-title">Tests de selección</div><ul><li>Numerical y verbal reasoning, SJT, HireVue</li></ul></li>
+            <li class="session-topic"><div class="session-topic-title">Flash Technical Questions — repaso exprés</div><ul><li>Ronda cronometrada de repaso técnico para llegar afilado al Mock Day</li></ul></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="session-item">
+        <button class="session-toggle" onclick="toggle(this)">
+          <span class="session-num">S6</span>
+          <span class="session-title">Mock Interviews — Superday Simulation</span>
+          <span class="session-dur">3h</span>
+          <div class="session-chevron"></div>
+        </button>
+        <div class="session-body">
+          <p class="session-objective">Objetivo: vivir un Superday completo — fit y técnica — con banqueros reales y feedback inmediato.</p>
+          <ul class="session-topics">
+            <li class="session-topic"><div class="session-topic-title">Simulación completa con banqueros reales</div><ul><li>Ronda 1: Fit interview + feedback</li><li>Ronda 2: Technical interview (accounting, valoración, M&amp;A) + feedback</li><li>Cierre: Q&amp;A con los banqueros</li></ul></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+
+<section id="claustro">
+  <div class="container">
+    <div class="fade-in">
+      <span class="section-label">Claustro del programa</span>
+      <h2 class="section-title">Profesionales que han estado donde tú quieres llegar</h2>
+      <p class="section-sub">El diferencial del programa no es el contenido — es el acceso a personas que han pasado estos procesos y trabajan hoy en estas firmas.</p>
+    </div>
+    <div class="claustro-grid fade-in">
+      <div class="claustro-card">
+        <div class="claustro-role">Dirección del programa</div>
+        <div class="claustro-name">Ramón Rodrigáñez Riesco</div>
+        <div class="claustro-firms"><span class="claustro-firm">CEO de Nova</span><span class="claustro-firm">Marca Personal</span><span class="claustro-firm">Entrevistas</span></div>
+      </div>
+      <div class="claustro-card">
+        <div class="claustro-role">Track Consultoría Estratégica</div>
+        <div class="claustro-name">Novas top en Consulting</div>
+        <div class="claustro-firms"><span class="claustro-firm">McKinsey</span><span class="claustro-firm">BCG</span><span class="claustro-firm">Bain</span><span class="claustro-firm">Oliver Wyman</span><span class="claustro-firm">Roland Berger</span><span class="claustro-firm">Strategy&amp;</span><span class="claustro-firm">Kearney</span></div>
+      </div>
+      <div class="claustro-card">
+        <div class="claustro-role">Track Banca de Inversión</div>
+        <div class="claustro-name">Novas top en IB</div>
+        <div class="claustro-firms"><span class="claustro-firm">J.P. Morgan</span><span class="claustro-firm">Morgan Stanley</span><span class="claustro-firm">Goldman Sachs</span><span class="claustro-firm">Citi</span><span class="claustro-firm">Deutsche Bank</span><span class="claustro-firm">Rothschild</span></div>
+      </div>
+      <div class="claustro-card">
+        <div class="claustro-role">Coordinación y plataforma</div>
+        <div class="claustro-name">Equipo Nova</div>
+        <div class="claustro-firms"><span class="claustro-firm">Gestión profesorado</span><span class="claustro-firm">Plataforma educativa</span><span class="claustro-firm">Seguimiento alumnos</span></div>
+      </div>
+    </div>
+    <p class="firms-disclaimer fade-in">Ejemplos de perfil profesional de ediciones anteriores; Nova no garantiza la representación de firmas concretas en futuras ediciones.</p>
+  </div>
+</section>
+
+<section id="resultados" class="alt">
+  <div class="container">
+    <div class="fade-in">
+      <span class="section-label">Edición 2025</span>
+      <h2 class="section-title">Los números hablan por sí solos</h2>
+      <p class="section-sub">Resultados del programa Talentum Business 2025 con CEU San Pablo, sobre 27 alumnos participantes y 22 respuestas de feedback.</p>
+    </div>
+    <div class="stats-grid fade-in">
+      <div class="stat-tile"><div class="n">90</div><div class="l">NPS Final</div></div>
+      <div class="stat-tile"><div class="n">100%</div><div class="l">Profesorado superó expectativas</div></div>
+      <div class="stat-tile"><div class="n">81%</div><div class="l">Casos prácticos: excelente</div></div>
+      <div class="stat-tile"><div class="n">8.64</div><div class="l">Utilidad recursos /10</div></div>
+    </div>
+    <div class="quotes fade-in">
+      <div class="quote-card">
+        <div class="quote-mark">"</div>
+        <p class="quote-text">La calidad de los profesionales me ha superado mis expectativas y el programa me ha ayudado mucho a decidirme por qué industria apostar y a ganar motivación de cara a afrontar los procesos de selección.</p>
+        <div class="quote-author">Alumno CEU San Pablo, edición 2025</div>
+      </div>
+      <div class="quote-card">
+        <div class="quote-mark">"</div>
+        <p class="quote-text">Estoy muy agradecida al equipo de Nova por haberme dado esta oportunidad de ponerme a prueba y de conocer a profesionales tan top como los que vinieron a las sesiones iniciales y a las de entrevistas.</p>
+        <div class="quote-author">Alumna CEU San Pablo, edición 2025</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="empleabilidad">
+  <div class="container">
+    <div class="fade-in">
+      <span class="section-label">Empleabilidad</span>
+      <h2 class="section-title">Dónde han entrado los alumnos de la última edición</h2>
+      <p class="section-sub">Sobre 30 respuestas de seguimiento tras el programa 2025.</p>
+    </div>
+    <div class="stats-grid cols-3 fade-in">
+      <div class="stat-tile"><div class="n">43%</div><div class="l">Nueva colocación tras el programa</div></div>
+      <div class="stat-tile"><div class="n">3</div><div class="l">Sectores concentran la mayoría: Consultoría, Banca, Auditoría</div></div>
+      <div class="stat-tile"><div class="n">12</div><div class="l">Empresas distintas en las que han entrado</div></div>
+    </div>
+    <div class="firm-chips fade-in">
+      <span class="firm-chip">Accenture</span>
+      <span class="firm-chip">Deloitte</span>
+      <span class="firm-chip">Renta4</span>
+      <span class="firm-chip">BNP Paribas</span>
+      <span class="firm-chip">Izertis</span>
+      <span class="firm-chip">Befesa</span>
+      <span class="firm-chip">Acciona</span>
+      <span class="firm-chip">Loewe</span>
+      <span class="firm-chip">Forvis Mazars Group</span>
+      <span class="firm-chip">Aquila Capital</span>
+      <span class="firm-chip">Zurbano</span>
+    </div>
+    <p class="results-caption fade-in">Base: 30 respuestas de seguimiento, edición 2025. Cifra de empleabilidad calculada sobre nuevas colocaciones atribuibles al periodo posterior al programa.</p>
+  </div>
+</section>
+
+<section id="inversion" class="alt">
+  <div class="container">
+    <div class="fade-in">
+      <span class="section-label">Propuesta económica</span>
+      <h2 class="section-title">La inversión</h2>
+      <p class="section-sub">Una propuesta única que incluye los dos tracks, la plataforma educativa, el profesorado y 1 año de membresía Nova para los alumnos.</p>
+    </div>
+    <div class="pricing-wrap fade-in">
+      <div class="pricing-card">
+        <div class="pricing-card-head">
+          <div>
+            <div class="pricing-card-name">Talentum Business Specialized</div>
+            <div class="pricing-card-meta">2 tracks × 6 sesiones · 12 sesiones totales · ~32 horas de programa</div>
+          </div>
+          <div>
+            <div class="pricing-card-price">{{PRECIO}} €</div>
+            <div class="pricing-card-price-note">Hasta {{PLAZAS}} alumnos pre‑seleccionados por track</div>
+          </div>
+        </div>
+        <div class="pricing-card-body">
+          <div class="pricing-card-body-label">Qué incluye</div>
+          <ul class="includes-list">
+            <li>Dos tracks completamente independientes y especializados</li>
+            <li>Un tutor del sector acompañando cada track de principio a fin</li>
+            <li>Día de simulación final con 6 profesionales dando feedback individual</li>
+            <li>Materiales, presentaciones y guidebooks por track</li>
+            <li>Pre‑work en vídeo + plataforma educativa Nova</li>
+            <li>NPS, análisis y sesión de clausura</li>
+            <li>Hasta {{PLAZAS}} alumnos pre‑seleccionados por {{UNIVERSIDAD}} por track</li>
+            <li>Fast track de nominación a Nova para todos los alumnos</li>
+          </ul>
+          <a class="btn-primary" href="mailto:info@novatalent.com?subject=Talentum%20Business%20para%20{{UNIVERSIDAD}}">Hablemos de vuestra universidad →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-brand">Talentum Business — Programa desarrollado por Nova</div>
+  <div class="footer-right">Propuesta para {{UNIVERSIDAD}} · info@novatalent.com</div>
+</footer>
+
+<script>
+  function toggle(btn){ btn.closest('.session-item').classList.toggle('open'); }
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
