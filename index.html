@@ -232,6 +232,25 @@
     nav, .hero, section{ padding-left:22px; padding-right:22px; }
     .session-body{ padding-left:22px; }
   }
+
+  /* ---------- View switcher ---------- */
+  .switcher-wrap{ max-width:1000px; margin:0 auto; padding:0 40px 48px; }
+  .switcher{ display:flex; gap:6px; background:var(--bg-card); border:1px solid var(--border); border-radius:100px; padding:6px; }
+  .switcher-btn{
+    flex:1; text-align:center; padding:12px 18px; border-radius:100px; border:none;
+    background:transparent; color:var(--text-secondary);
+    font-family:'DM Sans', sans-serif; font-weight:600; font-size:13.5px;
+    cursor:pointer; transition:background 0.2s, color 0.2s;
+  }
+  .switcher-btn.active{ background:var(--teal); color:var(--bg-primary); }
+  .switcher-btn:not(.active):hover{ color:var(--text-primary); }
+  .switcher-hint{ text-align:center; font-size:12.5px; color:var(--text-muted); margin-top:12px; }
+  @media (max-width:640px){ .switcher-wrap{ padding-left:22px; padding-right:22px; } .switcher-btn{ font-size:12px; padding:12px 8px; } }
+
+  /* ---------- Bridge CTA (combinado -> tracks) ---------- */
+  .bridge{ text-align:center; }
+  .bridge .section-sub{ margin-left:auto; margin-right:auto; }
+  .bridge-btn{ border:none; cursor:pointer; margin-top:8px; }
 </style>
 
 <nav>
@@ -244,10 +263,6 @@
     <span>Talentum Business</span>
   </span>
   <ul class="nav-links">
-    <li><a href="#estructura">Estructura</a></li>
-    <li><a href="#claustro">Profesionales</a></li>
-    <li><a href="#resultados">Resultados</a></li>
-    <li><a href="#inversion">Inversión</a></li>
     <li><a class="nav-cta" href="mailto:info@novatalent.com?subject=Talentum%20Business%20para%20{{UNIVERSIDAD}}">Hablemos</a></li>
   </ul>
 </nav>
@@ -258,7 +273,7 @@
   <p class="hero-sub">El Programa Talentum Business acerca a los alumnos a las oportunidades profesionales más competitivas, preparándolos desde la universidad para destacar en los procesos de selección de Consultoría Estratégica y Banca de Inversión. Una experiencia práctica, de la mano de profesionales en activo, que les permite entender qué buscan las principales firmas y llegar al proceso realmente preparados.</p>
   <div class="cta-row">
     <a class="btn-primary" href="mailto:info@novatalent.com?subject=Talentum%20Business%20para%20{{UNIVERSIDAD}}">Quiero la propuesta completa →</a>
-    <a class="btn-secondary" href="#estructura">Ver estructura del programa <span class="material-symbols-outlined">chevron_right</span></a>
+    <a class="btn-secondary" href="#estructura-combinado">Ver estructura del programa <span class="material-symbols-outlined">chevron_right</span></a>
   </div>
   <div class="hero-stats">
     <div class="hero-stat"><div class="n">90</div><div class="l">NPS 2025</div></div>
@@ -268,6 +283,243 @@
     <div class="hero-stat"><div class="n">100%</div><div class="l">Profesorado superó expectativas</div></div>
   </div>
 </div>
+
+<div class="switcher-wrap">
+  <div class="switcher">
+    <button class="switcher-btn active" id="btn-combinado" onclick="showView('combinado')">Programa combinado · 2025</button>
+    <button class="switcher-btn" id="btn-tracks" onclick="showView('tracks')">Tracks independientes · Nuevo</button>
+  </div>
+  <p class="switcher-hint">Así fue el programa que ya conocéis — y así lo hemos evolucionado para el curso 2026/27.</p>
+</div>
+
+<div id="view-combinado" class="view">
+
+  <section>
+    <div class="container">
+      <div class="fade-in">
+        <span class="section-label">Edición 2025</span>
+        <h2 class="section-title">El programa que ya conocéis</h2>
+        <p class="section-sub">Seis sesiones presenciales, los viernes por la tarde durante el trimestre, combinando Consultoría Estratégica y Banca de Inversión para que el alumno explore ambos sectores y se prepare para los dos procesos de selección.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="estructura-combinado" class="alt">
+    <div class="container">
+      <div class="fade-in">
+        <span class="section-label">Estructura</span>
+        <h2 class="section-title">Seis sesiones, un recorrido completo</h2>
+        <p class="section-sub">Sesiones de 3h, viernes de 15:30h a 18:30h. Toca cada sesión para ver el contenido completo.</p>
+      </div>
+
+      <div class="sessions-block fade-in">
+        <div class="sessions-block-label">El programa · 6 sesiones</div>
+
+        <div class="session-item">
+          <button class="session-toggle" onclick="toggle(this)">
+            <span class="session-num">S1</span>
+            <span class="session-title">Marca Personal y Preparación de Entrevistas</span>
+            <span class="session-dur">3h</span>
+            <div class="session-chevron"></div>
+          </button>
+          <div class="session-body">
+            <ul class="session-topics">
+              <li class="session-topic"><ul>
+                <li>Descubrir tus fortalezas para identificar qué salida profesional se adapta mejor a tus competencias</li>
+                <li>Tu mejor CV, LinkedIn y cover letter para aplicar a consultoría y banca de inversión</li>
+                <li>Networking y otros consejos para alcanzar un puesto en estas industrias</li>
+              </ul></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="session-item">
+          <button class="session-toggle" onclick="toggle(this)">
+            <span class="session-num">S2</span>
+            <span class="session-title">Consultoría Estratégica</span>
+            <span class="session-dur">3h</span>
+            <div class="session-chevron"></div>
+          </button>
+          <div class="session-body">
+            <ul class="session-topics">
+              <li class="session-topic"><ul>
+                <li>La industria de la consultoría estratégica y el rol de los consultores en distintos sectores</li>
+                <li>Competencias esenciales para iniciar una carrera en consultoría: networking, online test, fit interview</li>
+                <li>Pensamiento crítico y resolución de problemas complejos para las entrevistas de caso</li>
+                <li>Casos reales con profesionales del sector</li>
+              </ul></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="session-item">
+          <button class="session-toggle" onclick="toggle(this)">
+            <span class="session-num">S3</span>
+            <span class="session-title">Banca de Inversión</span>
+            <span class="session-dur">3h</span>
+            <div class="session-chevron"></div>
+          </button>
+          <div class="session-body">
+            <ul class="session-topics">
+              <li class="session-topic"><ul>
+                <li>La industria de la banca de inversión y el papel de los banqueros en las operaciones financieras</li>
+                <li>Habilidades técnicas básicas: modelos financieros, valoración y contabilidad</li>
+                <li>Pensamiento crítico para analizar datos financieros complejos y tomar decisiones informadas</li>
+                <li>Casos de entrevista reales con profesionales del sector</li>
+              </ul></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="session-item">
+          <button class="session-toggle" onclick="toggle(this)">
+            <span class="session-num">S4</span>
+            <span class="session-title">Workshop &amp; Peer Feedback</span>
+            <span class="session-dur">3h</span>
+            <div class="session-chevron"></div>
+          </button>
+          <div class="session-body">
+            <ul class="session-topics">
+              <li class="session-topic"><ul>
+                <li>Caso práctico diseñado por Nova, basado en procesos reales de consultoría y banca de inversión</li>
+                <li>Trabajo en equipo para estructurar y presentar soluciones de forma efectiva</li>
+                <li>Feedback de compañeros y del equipo facilitador</li>
+                <li>Consolidación de habilidades clave antes de las entrevistas con profesionales del sector</li>
+              </ul></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="session-item">
+          <button class="session-toggle" onclick="toggle(this)">
+            <span class="session-num">S5</span>
+            <span class="session-title">Práctica de Entrevistas — Consultoría Estratégica</span>
+            <span class="session-dur">3h</span>
+            <div class="session-chevron"></div>
+          </button>
+          <div class="session-body">
+            <ul class="session-topics">
+              <li class="session-topic"><div class="session-topic-title">Entrevista Personal</div><ul><li>Entrevistas simuladas con expertos, con feedback inmediato sobre desempeño y comunicación</li></ul></li>
+              <li class="session-topic"><div class="session-topic-title">Entrevista de Caso</div><ul><li>Resolución de casos en tiempo real con la guía de profesionales</li></ul></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="session-item">
+          <button class="session-toggle" onclick="toggle(this)">
+            <span class="session-num">S6</span>
+            <span class="session-title">Práctica de Entrevistas — Banca de Inversión</span>
+            <span class="session-dur">3h</span>
+            <div class="session-chevron"></div>
+          </button>
+          <div class="session-body">
+            <ul class="session-topics">
+              <li class="session-topic"><div class="session-topic-title">Entrevista Personal</div><ul><li>Entrevistas simuladas con expertos, con feedback inmediato sobre desempeño y comunicación</li></ul></li>
+              <li class="session-topic"><div class="session-topic-title">Entrevista de Caso</div><ul><li>Resolución de casos técnicos en tiempo real con la guía de profesionales</li></ul></li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="fade-in">
+        <span class="section-label">Profesores y ponentes</span>
+        <h2 class="section-title">Quién lo imparte</h2>
+      </div>
+      <div class="claustro-grid fade-in">
+        <div class="claustro-card">
+          <div class="claustro-role">Dirección del programa</div>
+          <div class="claustro-name">Ramón Rodrigáñez</div>
+          <div class="claustro-firms"><span class="claustro-firm">Co-Fundador &amp; CEO de Nova</span><span class="claustro-firm">Ex-BCG</span></div>
+        </div>
+        <div class="claustro-card">
+          <div class="claustro-role">Career &amp; Admissions Coach</div>
+          <div class="claustro-name">Mike Mascarenhas</div>
+          <div class="claustro-firms"><span class="claustro-firm">Ex-BCG</span><span class="claustro-firm">Ex-IESE</span></div>
+        </div>
+        <div class="claustro-card">
+          <div class="claustro-role">Banca de Inversión</div>
+          <div class="claustro-name">Jorge Gimenez-Arribas Silva</div>
+          <div class="claustro-firms"><span class="claustro-firm">Socio @ Libertum Capital</span><span class="claustro-firm">Ex-UBS M&amp;A</span></div>
+        </div>
+      </div>
+      <p class="firms-disclaimer fade-in">+ 15 consultores y banqueros de la red de Nova con quienes los alumnos practican a lo largo del programa.</p>
+    </div>
+  </section>
+
+  <section id="resultados" class="alt">
+    <div class="container">
+      <div class="fade-in">
+        <span class="section-label">Edición 2025</span>
+        <h2 class="section-title">Los números hablan por sí solos</h2>
+        <p class="section-sub">Resultados del programa Talentum Business 2025 con CEU San Pablo, sobre 27 alumnos participantes y 22 respuestas de feedback.</p>
+      </div>
+      <div class="stats-grid fade-in">
+        <div class="stat-tile"><div class="n">90</div><div class="l">NPS Final</div></div>
+        <div class="stat-tile"><div class="n">100%</div><div class="l">Profesorado superó expectativas</div></div>
+        <div class="stat-tile"><div class="n">81%</div><div class="l">Casos prácticos: excelente</div></div>
+        <div class="stat-tile"><div class="n">8.64</div><div class="l">Utilidad recursos /10</div></div>
+      </div>
+      <div class="quotes fade-in">
+        <div class="quote-card">
+          <div class="quote-mark">"</div>
+          <p class="quote-text">La calidad de los profesionales me ha superado mis expectativas y el programa me ha ayudado mucho a decidirme por qué industria apostar y a ganar motivación de cara a afrontar los procesos de selección.</p>
+          <div class="quote-author">Alumno CEU San Pablo, edición 2025</div>
+        </div>
+        <div class="quote-card">
+          <div class="quote-mark">"</div>
+          <p class="quote-text">Estoy muy agradecida al equipo de Nova por haberme dado esta oportunidad de ponerme a prueba y de conocer a profesionales tan top como los que vinieron a las sesiones iniciales y a las de entrevistas.</p>
+          <div class="quote-author">Alumna CEU San Pablo, edición 2025</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="empleabilidad">
+    <div class="container">
+      <div class="fade-in">
+        <span class="section-label">Empleabilidad</span>
+        <h2 class="section-title">Dónde han entrado los alumnos de la última edición</h2>
+        <p class="section-sub">Sobre 30 respuestas de seguimiento tras el programa 2025.</p>
+      </div>
+      <div class="stats-grid cols-3 fade-in">
+        <div class="stat-tile"><div class="n">43%</div><div class="l">Nueva colocación tras el programa</div></div>
+        <div class="stat-tile"><div class="n">3</div><div class="l">Sectores concentran la mayoría: Consultoría, Banca, Auditoría</div></div>
+        <div class="stat-tile"><div class="n">12</div><div class="l">Empresas distintas en las que han entrado</div></div>
+      </div>
+      <div class="firm-chips fade-in">
+        <span class="firm-chip">Accenture</span>
+        <span class="firm-chip">Deloitte</span>
+        <span class="firm-chip">Renta4</span>
+        <span class="firm-chip">BNP Paribas</span>
+        <span class="firm-chip">Izertis</span>
+        <span class="firm-chip">Befesa</span>
+        <span class="firm-chip">Acciona</span>
+        <span class="firm-chip">Loewe</span>
+        <span class="firm-chip">Forvis Mazars Group</span>
+        <span class="firm-chip">Aquila Capital</span>
+        <span class="firm-chip">Zurbano</span>
+      </div>
+      <p class="results-caption fade-in">Base: 30 respuestas de seguimiento, edición 2025. Cifra de empleabilidad calculada sobre nuevas colocaciones atribuibles al periodo posterior al programa.</p>
+    </div>
+  </section>
+
+  <section class="alt">
+    <div class="container bridge fade-in">
+      <span class="section-label">¿Y si vamos un paso más allá?</span>
+      <h2 class="section-title">La versión especializada para 2026/27</h2>
+      <p class="section-sub">Dos tracks independientes, con el doble de profundidad técnica en cada sector.</p>
+      <button class="btn-primary bridge-btn" onclick="showView('tracks')">Ver tracks independientes <span class="material-symbols-outlined">chevron_right</span></button>
+    </div>
+  </section>
+
+</div>
+
+<div id="view-tracks" class="view" hidden>
 
 <section id="programa" class="alt">
   <div class="container">
@@ -597,63 +849,6 @@
   </div>
 </section>
 
-<section id="resultados" class="alt">
-  <div class="container">
-    <div class="fade-in">
-      <span class="section-label">Edición 2025</span>
-      <h2 class="section-title">Los números hablan por sí solos</h2>
-      <p class="section-sub">Resultados del programa Talentum Business 2025 con CEU San Pablo, sobre 27 alumnos participantes y 22 respuestas de feedback.</p>
-    </div>
-    <div class="stats-grid fade-in">
-      <div class="stat-tile"><div class="n">90</div><div class="l">NPS Final</div></div>
-      <div class="stat-tile"><div class="n">100%</div><div class="l">Profesorado superó expectativas</div></div>
-      <div class="stat-tile"><div class="n">81%</div><div class="l">Casos prácticos: excelente</div></div>
-      <div class="stat-tile"><div class="n">8.64</div><div class="l">Utilidad recursos /10</div></div>
-    </div>
-    <div class="quotes fade-in">
-      <div class="quote-card">
-        <div class="quote-mark">"</div>
-        <p class="quote-text">La calidad de los profesionales me ha superado mis expectativas y el programa me ha ayudado mucho a decidirme por qué industria apostar y a ganar motivación de cara a afrontar los procesos de selección.</p>
-        <div class="quote-author">Alumno CEU San Pablo, edición 2025</div>
-      </div>
-      <div class="quote-card">
-        <div class="quote-mark">"</div>
-        <p class="quote-text">Estoy muy agradecida al equipo de Nova por haberme dado esta oportunidad de ponerme a prueba y de conocer a profesionales tan top como los que vinieron a las sesiones iniciales y a las de entrevistas.</p>
-        <div class="quote-author">Alumna CEU San Pablo, edición 2025</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="empleabilidad">
-  <div class="container">
-    <div class="fade-in">
-      <span class="section-label">Empleabilidad</span>
-      <h2 class="section-title">Dónde han entrado los alumnos de la última edición</h2>
-      <p class="section-sub">Sobre 30 respuestas de seguimiento tras el programa 2025.</p>
-    </div>
-    <div class="stats-grid cols-3 fade-in">
-      <div class="stat-tile"><div class="n">43%</div><div class="l">Nueva colocación tras el programa</div></div>
-      <div class="stat-tile"><div class="n">3</div><div class="l">Sectores concentran la mayoría: Consultoría, Banca, Auditoría</div></div>
-      <div class="stat-tile"><div class="n">12</div><div class="l">Empresas distintas en las que han entrado</div></div>
-    </div>
-    <div class="firm-chips fade-in">
-      <span class="firm-chip">Accenture</span>
-      <span class="firm-chip">Deloitte</span>
-      <span class="firm-chip">Renta4</span>
-      <span class="firm-chip">BNP Paribas</span>
-      <span class="firm-chip">Izertis</span>
-      <span class="firm-chip">Befesa</span>
-      <span class="firm-chip">Acciona</span>
-      <span class="firm-chip">Loewe</span>
-      <span class="firm-chip">Forvis Mazars Group</span>
-      <span class="firm-chip">Aquila Capital</span>
-      <span class="firm-chip">Zurbano</span>
-    </div>
-    <p class="results-caption fade-in">Base: 30 respuestas de seguimiento, edición 2025. Cifra de empleabilidad calculada sobre nuevas colocaciones atribuibles al periodo posterior al programa.</p>
-  </div>
-</section>
-
 <section id="inversion" class="alt">
   <div class="container">
     <div class="fade-in">
@@ -692,6 +887,8 @@
   </div>
 </section>
 
+</div>
+
 <footer>
   <div class="footer-brand">
     <svg class="nova-logo" viewBox="0 0 369 112" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Nova">
@@ -704,6 +901,13 @@
 </footer>
 
 <script>
+  function showView(name){
+    document.getElementById('view-combinado').hidden = (name !== 'combinado');
+    document.getElementById('view-tracks').hidden = (name !== 'tracks');
+    document.getElementById('btn-combinado').classList.toggle('active', name === 'combinado');
+    document.getElementById('btn-tracks').classList.toggle('active', name === 'tracks');
+    window.scrollTo({ top: document.querySelector('.switcher-wrap').offsetTop - 90, behavior: 'smooth' });
+  }
   function toggle(btn){ btn.closest('.session-item').classList.toggle('open'); }
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
